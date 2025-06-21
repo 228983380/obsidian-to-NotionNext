@@ -11,6 +11,7 @@ export interface PluginSettings {
 	notionAPINext: string;
 	databaseIDNext: string;
 	bannerUrl: string;
+	webhookUrl: string;
 	notionUser: string;
 	NotionLinkDisplay: boolean;
 	proxy: string;
@@ -47,6 +48,7 @@ export const DEFAULT_SETTINGS: PluginSettings = {
 	notionAPINext: "",
 	databaseIDNext: "",
 	bannerUrl: "",
+	webhookUrl: "",
 	notionUser: "",
 	NotionLinkDisplay: true,
 	proxy: "",
@@ -82,6 +84,8 @@ export class ObsidianSettingTab extends PluginSettingTab {
 		containerEl.createEl('h2', { text: i18nConfig.GeneralSetting });
 
 		this.createSettingEl(containerEl, i18nConfig.BannerUrl, i18nConfig.BannerUrlDesc, 'text', i18nConfig.BannerUrlText, this.plugin.settings.bannerUrl, 'bannerUrl')
+
+		this.createSettingEl(containerEl, "EdgeOne Webhook URL", "The webhook URL for EdgeOne", 'text', "Enter EdgeOne webhook URL", this.plugin.settings.webhookUrl, 'webhookUrl')
 
 		this.createSettingEl(containerEl, i18nConfig.NotionUser, i18nConfig.NotionUserDesc, 'text', i18nConfig.NotionUserText, this.plugin.settings.notionUser, 'notionUser')
 
@@ -303,5 +307,3 @@ export class ObsidianSettingTab extends PluginSettingTab {
 		}
 	}
 }
-
-
