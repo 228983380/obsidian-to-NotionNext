@@ -1,5 +1,5 @@
 import {i18nConfig} from "../lang/I18n";
-import {App, Notice} from "obsidian";
+import {App, Notice, requestUrl} from "obsidian";
 import {Upload2NotionNext} from "./upload_next/Upload2NotionNext";
 import {Upload2NotionGeneral} from "./upload_general/Upload2NotionGeneral";
 import {Upload2NotionCustom} from "./upoload_custom/Upload2NotionCustom";
