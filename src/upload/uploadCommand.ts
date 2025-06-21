@@ -52,20 +52,28 @@ export async function uploadCommandNext(
 			new Notice(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`).noticeEl.style.color = "green";
 			console.log(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`);
 			// http 进行post 发送提醒
-			const postResponse = await requestUrl({
-				url: "https://pages-api.edgeone.ai/v1/webhook/bd468612b57ca5c79d1626a12215c11640c78894c7a8723a13682d1206fe12d4",
-				//替换为你的webhook URL
-				method: "POST",
-				body: JSON.stringify({
-					text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
-				}),
-				// 替换你想要的内容
-				headers: {
-					"Content-Type": "application/json",
-					// 按照你的api添加相应的header
-				},
-			});
-			new Notice(`上传edgeone成功`).noticeEl.style.color = "green";
+			if (settings.webhookUrl?.trim()) {
+				try {
+					const postResponse = await requestUrl({
+						url: settings.webhookUrl,
+						method: "POST",
+						body: JSON.stringify({
+							text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
+						}),
+						headers: {
+							"Content-Type": "application/json",
+						},
+					});
+					
+					if (postResponse.status === 200) {
+						new Notice(`已通知edgeone提交编译`).noticeEl.style.color = "green";
+					} else {
+						new Notice(`通知edgeone失败，状态码: ${postResponse.status}`).noticeEl.style.color = "red";
+					}
+				} catch (error) {
+					new Notice(`通知edgeone失败请求异常: ${error.message}`).noticeEl.style.color = "red";
+				}
+			}
 		} else {
 			new Notice(`${i18nConfig["sync-fail"]} ${basename}`, 5000);
 			console.log(`${i18nConfig["sync-fail"]} ${basename}`);
@@ -107,20 +115,28 @@ export async function uploadCommandGeneral(
 			new Notice(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`).noticeEl.style.color = "green";
 			console.log(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`);
 			// http 进行post 发送提醒
-			const postResponse = await requestUrl({
-				url: "https://pages-api.edgeone.ai/v1/webhook/bd468612b57ca5c79d1626a12215c11640c78894c7a8723a13682d1206fe12d4",
-				//替换为你的webhook URL
-				method: "POST",
-				body: JSON.stringify({
-					text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
-				}),
-				// 替换你想要的内容
-				headers: {
-					"Content-Type": "application/json",
-					// 按照你的api添加相应的header
-				},
-			});
-			new Notice(`上传edgeone成功`).noticeEl.style.color = "green";
+			if (settings.webhookUrl?.trim()) {
+				try {
+					const postResponse = await requestUrl({
+						url: settings.webhookUrl,
+						method: "POST",
+						body: JSON.stringify({
+							text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
+						}),
+						headers: {
+							"Content-Type": "application/json",
+						},
+					});
+					
+					if (postResponse.status === 200) {
+						new Notice(`已通知edgeone提交编译`).noticeEl.style.color = "green";
+					} else {
+						new Notice(`通知edgeone失败，状态码: ${postResponse.status}`).noticeEl.style.color = "red";
+					}
+				} catch (error) {
+					new Notice(`通知edgeone失败请求异常: ${error.message}`).noticeEl.style.color = "red";
+				}
+			}
 		} else {
 			new Notice(`${i18nConfig["sync-fail"]} ${basename}`, 5000);
 			console.log(`${i18nConfig["sync-fail"]} ${basename}`);
@@ -163,20 +179,28 @@ export async function uploadCommandCustom(
 			new Notice(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`).noticeEl.style.color = "green";
 			console.log(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`);
 			// http 进行post 发送提醒
-			const postResponse = await requestUrl({
-				url: "https://pages-api.edgeone.ai/v1/webhook/bd468612b57ca5c79d1626a12215c11640c78894c7a8723a13682d1206fe12d4",
-				//替换为你的webhook URL
-				method: "POST",
-				body: JSON.stringify({
-					text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
-				}),
-				// 替换你想要的内容
-				headers: {
-					"Content-Type": "application/json",
-					// 按照你的api添加相应的header
-				},
-			});
-			new Notice(`上传edgeone成功`).noticeEl.style.color = "green";
+			if (settings.webhookUrl?.trim()) {
+				try {
+					const postResponse = await requestUrl({
+						url: settings.webhookUrl,
+						method: "POST",
+						body: JSON.stringify({
+							text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
+						}),
+						headers: {
+							"Content-Type": "application/json",
+						},
+					});
+					
+					if (postResponse.status === 200) {
+						new Notice(`已通知edgeone提交编译`).noticeEl.style.color = "green";
+					} else {
+						new Notice(`通知edgeone失败，状态码: ${postResponse.status}`).noticeEl.style.color = "red";
+					}
+				} catch (error) {
+					new Notice(`通知edgeone失败请求异常: ${error.message}`).noticeEl.style.color = "red";
+				}
+			}
 		} else {
 			new Notice(`${i18nConfig["sync-fail"]} ${basename}`, 5000);
 			console.log(`${i18nConfig["sync-fail"]} ${basename}`);
