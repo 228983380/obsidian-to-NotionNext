@@ -51,6 +51,18 @@ export async function uploadCommandNext(
 		if (response.status === 200) {
 			new Notice(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`).noticeEl.style.color = "green";
 			console.log(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`);
+			// http 进行post 发送提醒
+			const postResponse = await requestUrl({
+				url: "your-webhook-url", // 替换为你的webhook URL
+				method: "POST",
+				body: JSON.stringify({
+					text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
+				}), // 替换你想要的内容
+				headers: {
+					"Content-Type": "application/json", // 按照你的api添加相应的header
+				},
+			});
+			new Notice(`上传xxx成功`).noticeEl.style.color = "green";
 		} else {
 			new Notice(`${i18nConfig["sync-fail"]} ${basename}`, 5000);
 			console.log(`${i18nConfig["sync-fail"]} ${basename}`);
@@ -91,6 +103,18 @@ export async function uploadCommandGeneral(
 		if (response.status === 200) {
 			new Notice(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`).noticeEl.style.color = "green";
 			console.log(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`);
+			// http 进行post 发送提醒
+			const postResponse = await requestUrl({
+				url: "your-webhook-url", // 替换为你的webhook URL
+				method: "POST",
+				body: JSON.stringify({
+					text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
+				}), // 替换你想要的内容
+				headers: {
+					"Content-Type": "application/json", // 按照你的api添加相应的header
+				},
+			});
+			new Notice(`上传xxx成功`).noticeEl.style.color = "green";
 		} else {
 			new Notice(`${i18nConfig["sync-fail"]} ${basename}`, 5000);
 			console.log(`${i18nConfig["sync-fail"]} ${basename}`);
@@ -132,6 +156,18 @@ export async function uploadCommandCustom(
 		if (response.status === 200) {
 			new Notice(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`).noticeEl.style.color = "green";
 			console.log(`${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`);
+			// http 进行post 发送提醒
+			const postResponse = await requestUrl({
+				url: "your-webhook-url", // 替换为你的webhook URL
+				method: "POST",
+				body: JSON.stringify({
+					text: `${i18nConfig["sync-preffix"]} ${basename} ${i18nConfig["sync-success"]}`,
+				}), // 替换你想要的内容
+				headers: {
+					"Content-Type": "application/json", // 按照你的api添加相应的header
+				},
+			});
+			new Notice(`上传xxx成功`).noticeEl.style.color = "green";
 		} else {
 			new Notice(`${i18nConfig["sync-fail"]} ${basename}`, 5000);
 			console.log(`${i18nConfig["sync-fail"]} ${basename}`);
